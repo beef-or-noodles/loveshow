@@ -26,7 +26,14 @@
 
 <script>
     export default {
-        name: "footerbar"
+        name: "footerbar",
+        data() {
+            return {
+                list: [{
+
+                }]
+            }
+        },
     }
 </script>
 

@@ -5,6 +5,13 @@ import routes from './router'
 Vue.use(Router)
 import 'amfe-flexible'
 
+import { Lazyload } from 'vant';
+Vue.use(Lazyload);
+// 注册时可以配置额外的选项
+Vue.use(Lazyload, {
+    lazyComponent: true,
+});
+
 import './assets/iconfont/iconfont.css'
 
 import store from './store/index'

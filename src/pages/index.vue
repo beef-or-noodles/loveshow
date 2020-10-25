@@ -1,5 +1,5 @@
 <template>
-  <div class="main page-bg">
+  <div class="main">
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item>
         <div class="swipeItem">
@@ -26,47 +26,99 @@
         </van-swipe>
       </notice-bar>
     </div>
-    <div class="list">
-      <div class="item" v-for="item in 5" :key="item">
-        <div class="imgBox">
-          <img src="../assets/images/showImg.jpg" alt="">
-        </div>
-        <div class="content">
-          <div class="title">
-            <p v-if="item/2==1">
-              我今天怎么这么好看，啦啦啦啦~~
-            </p>
-            <div class="tag" v-else>
-              <p>拍客·美女</p>
-            </div>
-          </div>
-          <div class="userInfo flex-center">
-            <div class="info flex-align-center">
-              <div class="icon">
-                <img src="../assets/images/showImg.jpg" alt="">
+      <pull-refresh v-model="refreshing" @refresh="onRefresh">
+          <van-list
+                  v-model="loading"
+                  :finished="finished"
+                  finished-text="没有更多了"
+                  @load="onLoad"
+          >
+              <div class="list">
+                  <div class="item"
+                       v-for="(item,index) in list"
+                       :key="index"
+                       @click="itemLink(item)"
+                  >
+                      <div class="imgBox">
+                          <img alt="" v-lazy="item.img">
+                      </div>
+                      <div class="content">
+                          <div class="title">
+                              <p v-if="item/2==1">
+                                  我今天怎么这么好看，啦啦啦啦~~
+                              </p>
+                              <div class="tag" v-else>
+                                  <p>拍客·美女</p>
+                              </div>
+                          </div>
+                          <div class="userInfo flex-center">
+                              <div class="info flex-align-center">
+                                  <div class="icon">
+                                      <img src="../assets/images/showImg.jpg" alt="">
+                                  </div>
+                                  <p class="name">花花是个小摩托</p>
+                              </div>
+                              <div class="collect iconfont icon-love_icon" v-if="true"></div>
+                              <div class="activeCollect iconfont icon-xihuan" v-else></div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <p class="name">花花是个小摩托</p>
-            </div>
-            <div class="collect iconfont icon-love_icon" v-if="true"></div>
-            <div class="activeCollect iconfont icon-xihuan" v-else></div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </van-list>
+      </pull-refresh>
   </div>
 </template>
 
 <script>
 import {Button as vanButton, Swipe as vanSwipe,
-  SwipeItem as vanSwipeItem,NoticeBar  } from 'vant';
+  SwipeItem as vanSwipeItem,NoticeBar, list as vanList,PullRefresh } from 'vant';
+import img from '../assets/images/showImg.jpg'
 export default {
     name: 'Index',
-    components:{vanButton,vanSwipe,vanSwipeItem,NoticeBar},
+    components:{vanButton,vanSwipe,vanSwipeItem,NoticeBar,vanList,PullRefresh},
     data() {
         return {
+            list: [{
+                img:img
+            }],
+            loading: false,
+            finished: false,
+            refreshing: false,
+        };
+    },
+  methods: {
+    itemLink(item) {
+      this.$router.push({path:`woker_detail/${item}`})
+    },
+      onLoad() {
+          // 异步更新数据
+          // setTimeout 仅做示例，真实场景中一般为 ajax 请求
+          setTimeout(() => {
+              if (this.refreshing) {
+                  this.list = [];
+                  this.refreshing = false;
+              }
 
-        }
-    }
+              for (let i = 0; i < 10; i++) {
+                  this.list.push({img:img});
+              }
+              this.loading = false;
+
+              if (this.list.length >= 40) {
+                  this.finished = true;
+              }
+          }, 1000);
+      },
+      onRefresh() {
+          // 清空列表数据
+          this.finished = false;
+
+          // 重新加载数据
+          // 将 loading 设置为 true，表示处于加载状态
+          this.loading = true;
+          this.onLoad();
+      },
+  },
 
 }
 </script>
@@ -91,6 +143,7 @@ export default {
           margin: 0;
           color: @text-1-grey;
           .texthidden();
+          font-size: 16px;
           &.active{
             color: @type-info;
           }

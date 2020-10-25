@@ -15,6 +15,11 @@ const routes = [
         }]
     },
     {
+        path: '/woker_detail/:id',
+        component: () => import(/* webpackChunkName:"woker_detail" */  '../pages/shopdetail/worker'),
+        meta:{ title: TITLE+'作品详情' }
+    },
+    {
         path: '/404',
         component: () => import(/* webpackChunkName:"404" */  '../pages/404')
     },

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="page-bg">
     <transition name="fade">
         <loading v-if="getLoading" />
     </transition>

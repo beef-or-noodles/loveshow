@@ -31,5 +31,13 @@ module.exports = {
                 '@': resolve('src')
             }
         }
+    },
+    pluginOptions: {
+        'style-resources-loader': {
+            preProcessor: 'less',
+            patterns: [
+                path.resolve(__dirname, './src/assets/less/public.less')
+            ]
+        }
     }
 }

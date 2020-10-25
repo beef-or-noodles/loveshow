@@ -1,0 +1,53 @@
+
+/*色系*/
+@theme-coloe: #FBE555;
+
+@page-bg-default: #EEEEEE;
+@page-bg-white: #FFFFFF;
+
+@text-black: #333333;
+@text-1-grey: #666666;
+@text-2-grey: #999999;
+@text-3-grey: #CCCCCC;
+
+@type-info: #2995E6;
+@type-warning: #E76234;
+@type-danger: #F1444D;
+@type-success: #00CC6A;
+
+  /*公共样式*/
+p{
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+img{
+  display: block;
+}
+.page-bg{
+  background-color: @page-bg-default;
+  min-height: 100vh;
+}
+/* 文字溢出处理 */
+.texthidden(@num:1){
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @num;
+  -webkit-box-orient: vertical;
+}
+.flex-align-center{
+  display: flex;
+  align-items: center;
+}
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*ios兼容*/
+.iphonex(@mun:0px){
+  padding-bottom: calc(constant(safe-area-inset-bottom) + @mun);
+  padding-bottom: calc(env(safe-area-inset-bottom) + @mun);
+}

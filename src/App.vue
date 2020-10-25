@@ -21,9 +21,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+  @import "./assets/less/public.less";
   #app{
-    /*padding-bottom: constant(safe-area-inset-bottom);*/
-    /*padding-bottom: env(safe-area-inset-bottom);*/
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
   }
 </style>

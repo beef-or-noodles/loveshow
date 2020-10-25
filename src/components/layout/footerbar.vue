@@ -3,7 +3,7 @@
         <div class="logo active" >
             <img src="../../assets/images/logo.png" alt="">
         </div>
-        <div class="active">
+        <div>
             <div class="icon iconfont icon-dating"></div>
             <p>大厅</p>
         </div>
@@ -13,7 +13,7 @@
             </div>
             <p>发布</p>
         </div>
-        <div>
+        <div class="active">
             <div class="icon iconfont icon-dingdanguanli-"></div>
             <p>订单</p>
         </div>
@@ -29,11 +29,9 @@
         name: "footerbar",
         data() {
             return {
-                list: [{
-
-                }]
+                activeRouter:''
             }
-        },
+        }
     }
 </script>
 
@@ -72,7 +70,7 @@
         .push{
             .iconpush{
                 background-color: @page-bg-white;
-                padding: 5px;
+                padding: 3px;
                 margin-top: -25px;
                 border-radius: 50%;
                 .icon{

@@ -31,20 +31,25 @@
         <div class="imgBox">
           <img src="../assets/images/showImg.jpg" alt="">
         </div>
-        <div class="title">
-          <p>
-            我今天怎么这么好看，啦啦啦啦~~
-          </p>
-        </div>
-        <div class="userInfo flex-center">
-          <div class="info flex-align-center">
-            <div class="icon">
-              <img src="../assets/images/showImg.jpg" alt="">
+        <div class="content">
+          <div class="title">
+            <p v-if="item/2==1">
+              我今天怎么这么好看，啦啦啦啦~~
+            </p>
+            <div class="tag" v-else>
+              <p>拍客·美女</p>
             </div>
-            <p class="name">花花是个小摩托</p>
           </div>
-          <div class="collect iconfont icon-love_icon" v-if="true"></div>
-          <div class="activeCollect iconfont icon-xihuan" v-else></div>
+          <div class="userInfo flex-center">
+            <div class="info flex-align-center">
+              <div class="icon">
+                <img src="../assets/images/showImg.jpg" alt="">
+              </div>
+              <p class="name">花花是个小摩托</p>
+            </div>
+            <div class="collect iconfont icon-love_icon" v-if="true"></div>
+            <div class="activeCollect iconfont icon-xihuan" v-else></div>
+          </div>
         </div>
       </div>
     </div>
@@ -103,6 +108,9 @@ export default {
         box-shadow: 1px 2px 5px @text-3-grey;
         border-radius: 6px;
         overflow: hidden;
+        .content{
+          background-color: @page-bg-white
+        }
         .imgBox{
           height: 220px;
           overflow: hidden;
@@ -113,7 +121,21 @@ export default {
         }
         .title{
           background-color: @page-bg-white;
-          padding: 5px;
+          padding: 8px 5px;
+          height: 38px;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          .tag{
+            position: absolute;
+            margin: 0 auto;
+            line-height: 34px;
+            border: 1px solid @text-3-grey;
+            font-size: 14px;
+            padding: 0 15px;
+            color: @text-1-grey;
+            margin-top: 0;
+          }
           p{
             .texthidden(@num:2);
             font-size: 14px;

@@ -1,23 +1,23 @@
 <template>
     <footer>
-        <div class="logo active" >
+        <div class="logo" :class="[activeRouter==='/home'?'active':'']" @click="$router.push({path: '/home'})">
             <img src="../../assets/images/logo.png" alt="">
         </div>
-        <div>
+        <div :class="[activeRouter==='/home'?'active':'']">
             <div class="icon iconfont icon-dating"></div>
             <p>大厅</p>
         </div>
-        <div class="push">
+        <div class="push" :class="[activeRouter==='/home'?'active':'']">
             <div class="iconpush">
                 <div class="icon iconfont icon-jia flex-center"></div>
             </div>
             <p>发布</p>
         </div>
-        <div class="active">
+        <div @click="orderRouter" :class="[activeRouter.indexOf('_order')!==-1?'active':'']">
             <div class="icon iconfont icon-dingdanguanli-"></div>
             <p>订单</p>
         </div>
-        <div>
+        <div :class="[activeRouter==='/home'?'active':'']">
             <div class="icon iconfont icon-wode1"></div>
             <p>我的</p>
         </div>
@@ -29,9 +29,24 @@
         name: "footerbar",
         data() {
             return {
-                activeRouter:''
+                activeRouter:'/home'
             }
-        }
+        },
+        watch: {
+            '$route'(newValue, oldValue) {
+                this.activeRouter = newValue.path
+            }
+        },
+        methods: {
+            orderRouter() {
+                // 判断商家和拍客
+                if (true) {
+                    this.$router.push({path: `/user_order`})
+                } else {
+                    this.$router.push({path: `/shop_order`})
+                }
+            }
+        },
     }
 </script>
 
@@ -52,7 +67,19 @@
         div{
             text-align: center;
             &.active{
-                color: @theme-coloe;
+                position: relative;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: @theme-coloe;
+                    opacity: .6;
+                    top: 0;
+                    right: 0px;
+                }
             }
             p{
                 font-size: 12px;
@@ -61,6 +88,9 @@
         .logo{
             &.active{
                 background-color: @theme-coloe;
+                &::after{
+                    display: none;
+                }
             }
             img{
                 width: 40px;
@@ -68,6 +98,9 @@
             }
         }
         .push{
+            &.active::after{
+                display: none;
+            }
             .iconpush{
                 background-color: @page-bg-white;
                 padding: 3px;

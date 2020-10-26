@@ -12,7 +12,17 @@ const routes = [
             path: 'home',
             component: () => import(/* webpackChunkName:"index" */ '../pages/index'),
             meta: {title: TITLE + '首页'}
-        }]
+        },
+        {
+            path: 'user_order',
+            component: () => import(/* webpackChunkName:"user_order" */  '../pages/order/userOrder'),
+            meta: {title: TITLE + '拍客订单'}
+        },
+        {
+            path: 'shop_order',
+            component: () => import(/* webpackChunkName:"shop_order" */  '../pages/order/shopOrder'),
+            meta: {title: TITLE + '商家订单'}
+        },]
     },
     {
         path: '/woker_detail/:id',

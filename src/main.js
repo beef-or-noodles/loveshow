@@ -18,7 +18,11 @@ import store from './store/index'
 Vue.config.productionTip = false
 const router = new Router({ routes })
 
+const originalPush = Router.prototype.push
 
+Router.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}
 // 根据路由设置标题// 路由发生改变修改页面的title
 router.beforeEach((to, from, next) => {
     if (to.meta.title) {

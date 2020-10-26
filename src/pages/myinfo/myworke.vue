@@ -1,92 +1,86 @@
 <template>
-    <div class="main">
-        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-            <van-swipe-item>
-                <div class="swipeItem">
-                    <img src="../assets/images/banner1.jpg" alt="">
+    <!--我的作品-->
+    <div>
+        <div class="banner">
+            <div class="userInfo">
+                <div class="iconhead">
+                    <img src="../../assets/images/showImg.jpg" alt="">
                 </div>
-            </van-swipe-item>
-            <van-swipe-item>
-                <div class="swipeItem">
-                    <img src="../assets/images/banner2.jpg" alt="">
+                <div class="infobox">
+                    <div class="name">
+                        <p>花花是个小模特</p>
+                    </div>
                 </div>
-            </van-swipe-item>
-        </van-swipe>
-        <div class="notice">
-            <notice-bar left-icon="volume-o" background="white" :scrollable="false">
-                <van-swipe
-                        vertical
-                        class="notice-swipe"
-                        :autoplay="3000"
-                        :show-indicators="false"
-                >
-                    <van-swipe-item><p>内容一</p></van-swipe-item>
-                    <van-swipe-item><p class="active">内容二</p></van-swipe-item>
-                    <van-swipe-item><p>内容三</p></van-swipe-item>
-                </van-swipe>
-            </notice-bar>
+                <goback postion="right"></goback>
+            </div>
         </div>
-        <pull-refresh v-model="refreshing" @refresh="onRefresh">
-            <van-list
-                    v-model="loading"
-                    :finished="finished"
-                    finished-text="没有更多了"
-                    @load="onLoad"
-            >
-                <van-skeleton title :row="5" :loading="skeletonLoading">
-                    <div class="list">
-                        <div class="item"
-                             v-for="(item,index) in list"
-                             :key="index"
-                             @click="itemLink(item)"
-                        >
-                            <div class="imgBox">
-                                <img alt="" v-lazy="item.img">
-                            </div>
-                            <div class="content">
-                                <div class="title">
-                                    <p v-if="item.type==2">
-                                        我今天怎么这么好看，啦啦啦啦~~
-                                    </p>
-                                    <div class="tag" v-else>
-                                        <p>拍客·美女</p>
-                                    </div>
+        <div class="content">
+            <div class="tables">
+                <van-tabs v-model="activeName">
+                    <van-tab title="TA的角色" name="1"></van-tab>
+                    <van-tab title="往期作品" name="2"></van-tab>
+                </van-tabs>
+            </div>
+            <pull-refresh v-model="refreshing" @refresh="onRefresh">
+                <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        finished-text="没有更多了"
+                        @load="onLoad"
+                >
+                    <van-skeleton title :row="5" :loading="skeletonLoading">
+                        <div class="list">
+                            <div class="item"
+                                 v-for="(item,index) in list"
+                                 :key="index"
+                                 @click="itemLink(item)"
+                            >
+                                <div class="imgBox">
+                                    <img alt="" v-lazy="item.img">
                                 </div>
-                                <div class="userInfo flex-center">
-                                    <div class="info flex-align-center" @click.stop="userDetail(item)">
-                                        <div class="icon">
-                                            <img src="../assets/images/showImg.jpg" alt="">
+                                <div class="content">
+                                    <div class="title">
+                                        <p v-if="item.type==2">
+                                            我今天怎么这么好看，啦啦啦啦~~
+                                        </p>
+                                        <div class="tag" v-else>
+                                            <p>拍客·美女</p>
                                         </div>
-                                        <p class="name">花花是个小摩托</p>
                                     </div>
-                                    <div @click.stop="likeClick(item)">
-                                        <div class="collect iconfont icon-love_icon" v-if="true"></div>
-                                        <div class="activeCollect iconfont icon-xihuan" v-else></div>
+                                    <div class="userInfo flex-center">
+                                        <div class="info flex-align-center">
+                                            <div class="icon">
+                                                <img src="../../assets/images/showImg.jpg" alt="">
+                                            </div>
+                                            <p class="name">花花是个小摩托</p>
+                                        </div>
+                                        <div @click.stop="likeClick(item)">
+                                            <div class="collect iconfont icon-love_icon" v-if="true"></div>
+                                            <div class="activeCollect iconfont icon-xihuan" v-else></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </van-skeleton>
+                    </van-skeleton>
 
-            </van-list>
-        </pull-refresh>
+                </van-list>
+            </pull-refresh>
+        </div>
     </div>
 </template>
 
 <script>
-    import {
-        Button as vanButton, Swipe as vanSwipe,
-        SwipeItem as vanSwipeItem, NoticeBar, list as vanList, PullRefresh,
-        Skeleton as vanSkeleton
-    } from 'vant';
-    import img from '../assets/images/showImg.jpg'
-
+    import img from '../../assets/images/showImg.jpg'
+    import goback from '@/components/layout/goback'
+    import {Tab as vanTab , Tabs as vanTabs,list as vanList, PullRefresh,
+        Skeleton as vanSkeleton} from 'vant'
     export default {
-        name: 'Index',
-        components: {vanButton, vanSwipe, vanSwipeItem, NoticeBar, vanList, PullRefresh, vanSkeleton},
+        name: "myworke",
+        components:{goback,vanTabs,vanTab, vanList, PullRefresh, vanSkeleton},
         data() {
             return {
+                activeName: "1",
                 list: [{
                     img: img,
                     type: 1, // 作品
@@ -98,10 +92,7 @@
                 finished: false,
                 refreshing: false,
                 skeletonLoading: false, //骨架屏
-            };
-        },
-        created() {
-            this.skeletonLoading = true
+            }
         },
         methods: {
             itemLink(item) {
@@ -110,14 +101,6 @@
                 } else {
                     this.$router.push({path: `/role_detail/${2}`})
                 }
-            },
-            //模特详情跳转
-            userDetail(item){
-                this.$router.push({path:`myworke/${1}`})
-            },
-            // 模特喜欢按钮
-            likeClick(item){
-
             },
             onLoad() {
                 // 异步更新数据
@@ -149,48 +132,53 @@
                 this.onLoad();
             },
         },
-
     }
 </script>
 
 <style lang="less" scoped>
-    .main {
-        .swipeItem {
-            max-height: 170px;
-            overflow: hidden;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+    .banner{
+        background: url("../../assets/images/workerbg.png");
+        background-size: 100%;
+        padding: 15px;
+        min-height: 100px;
+        .userInfo{
+            display: flex;
+            .iconhead{
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
             }
-        }
-
-        .notice {
-            margin: 10px 0;
-
-            .notice-swipe {
-                height: 40px;
-
-                p {
-                    line-height: 40px;
-                    margin: 0;
-                    color: @text-1-grey;
-                    .texthidden();
-                    font-size: 16px;
-
-                    &.active {
-                        color: @type-info;
+            .infobox{
+                margin-left: 15px;
+                flex: 1;
+                .name{
+                    color: white;
+                    p{
+                        font-size: 18px;
                     }
                 }
             }
         }
-
+    }
+    .content{
+        margin-top: -10px;
+        .tables{
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
         .list {
             display: flex;
             flex-wrap: wrap;
             padding-left: 10px;
-
+            margin-top: 15px;
             .item {
                 width: calc(50% - 10px);
                 margin-bottom: 10px;

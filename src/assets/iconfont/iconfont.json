@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2281469",
+      "name": "认证",
+      "font_class": "4",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "4238912",
+      "name": "保证金",
+      "font_class": "baozhengjin",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
       "icon_id": "4053442",
       "name": "向左",
       "font_class": "next",

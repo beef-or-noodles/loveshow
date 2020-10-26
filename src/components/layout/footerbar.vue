@@ -1,9 +1,13 @@
 <template>
     <footer>
-        <div class="logo" :class="[activeRouter==='/home'?'active':'']" @click="$router.push({path: '/home'})">
+        <div class="logo"
+             :class="[activeRouter==='/home'?'active':'']"
+             @click="$router.push({path: '/home'})">
             <img src="../../assets/images/logo.png" alt="">
         </div>
-        <div :class="[activeRouter==='/home'?'active':'']">
+        <div :class="[activeRouter==='/hall'?'active':'']"
+             @click="$router.push({path: '/hall'})"
+        >
             <div class="icon iconfont icon-dating"></div>
             <p>大厅</p>
         </div>

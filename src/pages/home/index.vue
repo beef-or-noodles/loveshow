@@ -3,12 +3,12 @@
         <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
             <van-swipe-item>
                 <div class="swipeItem">
-                    <img src="../assets/images/banner1.jpg" alt="">
+                    <img src="../../assets/images/banner1.jpg" alt="">
                 </div>
             </van-swipe-item>
             <van-swipe-item>
                 <div class="swipeItem">
-                    <img src="../assets/images/banner2.jpg" alt="">
+                    <img src="../../assets/images/banner2.jpg" alt="">
                 </div>
             </van-swipe-item>
         </van-swipe>
@@ -55,7 +55,7 @@
                                 <div class="userInfo flex-center">
                                     <div class="info flex-align-center" @click.stop="userDetail(item)">
                                         <div class="icon">
-                                            <img src="../assets/images/showImg.jpg" alt="">
+                                            <img src="../../assets/images/showImg.jpg" alt="">
                                         </div>
                                         <p class="name">花花是个小摩托</p>
                                     </div>
@@ -80,7 +80,7 @@
         SwipeItem as vanSwipeItem, NoticeBar, list as vanList, PullRefresh,
         Skeleton as vanSkeleton
     } from 'vant';
-    import img from '../assets/images/showImg.jpg'
+    import img from '../../assets/images/showImg.jpg'
 
     export default {
         name: 'Index',

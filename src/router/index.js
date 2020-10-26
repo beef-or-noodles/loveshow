@@ -10,8 +10,13 @@ const routes = [
         component: () => import(/* webpackChunkName:"index" */ '../pages/layout'),
         children: [{
             path: 'home',
-            component: () => import(/* webpackChunkName:"index" */ '../pages/index'),
+            component: () => import(/* webpackChunkName:"index" */ '../pages/home/index'),
             meta: {title: TITLE + '首页'}
+        },
+        {
+            path: 'hall',
+            component: () => import(/* webpackChunkName:"hall" */ '../pages/home/hall'),
+            meta: {title: TITLE + '大厅'}
         },
         {
             path: 'user_order',
@@ -33,6 +38,11 @@ const routes = [
         path: '/role_detail/:id',
         component: () => import(/* webpackChunkName:"woker_detail" */  '../pages/shopdetail/worker'),
         meta: {title: TITLE + '资料详情'}
+    },
+    {
+        path: '/notice_detail/:id',
+        component: () => import(/* webpackChunkName:"notice_detail" */  '../pages/shopdetail/notice'),
+        meta: {title: TITLE + '通告详情'}
     },
     {
         path: '/myworke/:id',

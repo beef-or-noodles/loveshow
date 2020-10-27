@@ -21,7 +21,8 @@
             <div class="icon iconfont icon-dingdanguanli-"></div>
             <p>订单</p>
         </div>
-        <div :class="[activeRouter==='/home'?'active':'']">
+        <div :class="[activeRouter==='/my'?'active':'']"
+             @click="$router.push({path: '/my'})">
             <div class="icon iconfont icon-wode1"></div>
             <p>我的</p>
         </div>

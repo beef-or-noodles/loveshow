@@ -6,6 +6,104 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6668369",
+      "name": "中年人",
+      "font_class": "zhongnianren",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "2458757",
+      "name": "妇女",
+      "font_class": "funv",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "2940810",
+      "name": "女宝",
+      "font_class": "nvbao",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "3177430",
+      "name": "男宝",
+      "font_class": "nanbao",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "6668340",
+      "name": "美女",
+      "font_class": "meinv",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "6668363",
+      "name": "帅哥",
+      "font_class": "shuaige",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "8176771",
+      "name": "人脸识别",
+      "font_class": "renlianshibie",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "13460953",
+      "name": "实名认证 (2)",
+      "font_class": "shimingrenzheng",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "13759367",
+      "name": "狗狗",
+      "font_class": "gougou1",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "14332755",
+      "name": "猫咪",
+      "font_class": "maomi",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "13326885",
+      "name": "向右",
+      "font_class": "xiangyou1",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "10141532",
+      "name": "地址",
+      "font_class": "dizhi",
+      "unicode": "e735",
+      "unicode_decimal": 59189
+    },
+    {
+      "icon_id": "16279603",
+      "name": "设 置",
+      "font_class": "shezhi",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "5599595",
+      "name": "优惠卷",
+      "font_class": "youhuijuan2",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
       "icon_id": "2281469",
       "name": "认证",
       "font_class": "4",

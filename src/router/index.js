@@ -27,12 +27,22 @@ const routes = [
             path: 'shop_order',
             component: () => import(/* webpackChunkName:"shop_order" */  '../pages/order/shopOrder'),
             meta: {title: TITLE + '商家订单'}
+        },
+        {
+            path: 'my',
+            component: () => import(/* webpackChunkName:"my" */  '../pages/myinfo/my'),
+            meta: {title: TITLE + '我的'}
         },]
     },
     {
         path: '/woker_detail/:id',
         component: () => import(/* webpackChunkName:"shopdetail_worker" */  '../pages/shopdetail/worker'),
         meta: {title: TITLE + '作品详情'}
+    },
+    {
+        path: '/collent',
+        component: () => import(/* webpackChunkName:"collent" */  '../pages/myinfo/collent'),
+        meta: {title: TITLE + '我的收藏'}
     },
     {
         path: '/role_detail/:id',

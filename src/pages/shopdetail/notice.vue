@@ -87,12 +87,25 @@
                 <div class="icon"><i class="iconfont icon-baozhengjin"></i><p>保证金</p></div>
             </div>
         </div>
-        <van-button color="#F45905"
-                    :disabled="false"
-                    block
-                    type="default">
-            申请
-        </van-button>
+        <div class="btns">
+            <div>
+                <van-button
+                        @click="goback"
+                        block>
+                    返回
+                </van-button>
+            </div>
+            <div>
+                <van-button color="#F45905"
+                            :disabled="true"
+                            block
+                            type="default">
+                    立即申请
+                </van-button>
+            </div>
+
+        </div>
+
     </div>
 </template>
 
@@ -106,12 +119,35 @@
 
             }
         },
+        methods: {
+            goback() {
+                this.$router.go(-1)
+            }
+        },
     }
 </script>
 
 <style lang="less" scoped>
     .pagedetail{
         padding: 10px;
+        .btns{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+             margin: 0 -10px;
+             display: flex;
+            &>div:nth-child(1){
+                button{
+                    border-color:white ;
+                }
+            }
+            &>div{
+                flex: 50%;
+                button{
+                    border-radius: 0;
+                }
+            }
+        }
         .shoppush{
             margin: 10px 0;
             padding: 10px;

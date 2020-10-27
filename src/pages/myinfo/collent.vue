@@ -1,93 +1,69 @@
 <template>
-    <div class="main">
-        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-            <van-swipe-item>
-                <div class="swipeItem">
-                    <img src="../../assets/images/banner1.jpg" alt="">
-                </div>
-            </van-swipe-item>
-            <van-swipe-item>
-                <div class="swipeItem">
-                    <img src="../../assets/images/banner2.jpg" alt="">
-                </div>
-            </van-swipe-item>
-        </van-swipe>
-        <div class="notice">
-            <notice-bar left-icon="volume-o" background="white" :scrollable="false">
-                <van-swipe
-                        vertical
-                        class="notice-swipe"
-                        :autoplay="3000"
-                        :show-indicators="false"
+    <!--我的作品-->
+    <div>
+        <div class="content">
+            <goback></goback>
+            <pull-refresh v-model="refreshing" @refresh="onRefresh">
+                <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        finished-text="没有更多了"
+                        @load="onLoad"
                 >
-                    <van-swipe-item><p>内容一</p></van-swipe-item>
-                    <van-swipe-item><p class="active">内容二</p></van-swipe-item>
-                    <van-swipe-item><p>内容三</p></van-swipe-item>
-                </van-swipe>
-            </notice-bar>
-        </div>
-        <pull-refresh v-model="refreshing" @refresh="onRefresh">
-            <van-list
-                    v-model="loading"
-                    :finished="finished"
-                    finished-text="没有更多了"
-                    @load="onLoad"
-            >
-                <van-skeleton title :row="5" :loading="skeletonLoading">
-                    <div class="list">
-                        <div class="item"
-                             v-for="(item,index) in list"
-                             :key="index"
-                             @click="itemLink(item)"
-                        >
-                            <div class="imgBox">
-                                <img alt="" v-lazy="item.img">
-                            </div>
-                            <div class="content">
-                                <div class="title">
-                                    <p v-if="item.type==2">
-                                        我今天怎么这么好看，啦啦啦啦~~
-                                    </p>
-                                    <div class="tag" v-else>
-                                        <p>拍客·美女</p>
-                                    </div>
+                    <van-skeleton title :row="5" :loading="skeletonLoading">
+                        <div class="list">
+                            <div class="item"
+                                 v-for="(item,index) in list"
+                                 :key="index"
+                                 @click="itemLink(item)"
+                            >
+                                <div class="imgBox">
+                                    <img alt="" v-lazy="item.img">
                                 </div>
-                                <div class="userInfo flex-center">
-                                    <div class="info flex-align-center"
-                                         @click.stop="$router.push({path:`myworke/${1}`})">
-                                        <div class="icon">
-                                            <img src="../../assets/images/showImg.jpg" alt="">
+                                <div class="content">
+                                    <div class="title">
+                                        <p v-if="item.type==2">
+                                            我今天怎么这么好看，啦啦啦啦~~
+                                        </p>
+                                        <div class="tag" v-else>
+                                            <p>拍客·美女</p>
                                         </div>
-                                        <p class="name">花花是个小摩托</p>
                                     </div>
-                                    <div @click.stop="likeClick(item)">
-                                        <div class="collect iconfont icon-love_icon" v-if="true"></div>
-                                        <div class="activeCollect iconfont icon-xihuan" v-else></div>
+                                    <div class="userInfo flex-center">
+                                        <div class="info flex-align-center"
+                                             @click.stop="$router.push({path:`myworke/${1}`})">
+                                            <div class="icon">
+                                                <img src="../../assets/images/showImg.jpg" alt="">
+                                            </div>
+                                            <p class="name">花花是个小摩托</p>
+                                        </div>
+                                        <div @click.stop="likeClick(item)">
+                                            <div class="collect iconfont icon-love_icon" v-if="false"></div>
+                                            <div class="activeCollect iconfont icon-xihuan" v-else></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </van-skeleton>
+                    </van-skeleton>
 
-            </van-list>
-        </pull-refresh>
+                </van-list>
+            </pull-refresh>
+        </div>
     </div>
 </template>
 
 <script>
-    import {
-        Button as vanButton, Swipe as vanSwipe,
-        SwipeItem as vanSwipeItem, NoticeBar, list as vanList, PullRefresh,
-        Skeleton as vanSkeleton
-    } from 'vant';
     import img from '../../assets/images/showImg.jpg'
-
+    import goback from '@/components/layout/goback'
+    import {Tab as vanTab , Tabs as vanTabs,list as vanList, PullRefresh,
+        Skeleton as vanSkeleton} from 'vant'
     export default {
-        name: 'Index',
-        components: {vanButton, vanSwipe, vanSwipeItem, NoticeBar, vanList, PullRefresh, vanSkeleton},
+        name: "collent",
+        components:{goback,vanTabs,vanTab, vanList, PullRefresh, vanSkeleton},
         data() {
             return {
+                activeName: "1",
                 list: [{
                     img: img,
                     type: 1, // 作品
@@ -99,10 +75,7 @@
                 finished: false,
                 refreshing: false,
                 skeletonLoading: false, //骨架屏
-            };
-        },
-        created() {
-            this.skeletonLoading = true
+            }
         },
         methods: {
             itemLink(item) {
@@ -111,10 +84,6 @@
                 } else {
                     this.$router.push({path: `/role_detail/${2}`})
                 }
-            },
-            // 模特喜欢按钮
-            likeClick(item){
-
             },
             onLoad() {
                 // 异步更新数据
@@ -146,48 +115,25 @@
                 this.onLoad();
             },
         },
-
     }
 </script>
 
 <style lang="less" scoped>
-    .main {
-        .swipeItem {
-            max-height: 170px;
+    .content{
+        margin-top: -10px;
+        .tables{
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
             overflow: hidden;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+            position: sticky;
+            top: -1px;
+            z-index: 99;
         }
-
-        .notice {
-            margin: 10px 0;
-
-            .notice-swipe {
-                height: 40px;
-
-                p {
-                    line-height: 40px;
-                    margin: 0;
-                    color: @text-1-grey;
-                    .texthidden();
-                    font-size: 16px;
-
-                    &.active {
-                        color: @type-info;
-                    }
-                }
-            }
-        }
-
         .list {
             display: flex;
             flex-wrap: wrap;
             padding-left: 10px;
-
+            margin-top: 15px;
             .item {
                 width: calc(50% - 10px);
                 margin-bottom: 10px;

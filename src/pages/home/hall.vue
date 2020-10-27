@@ -24,37 +24,39 @@
                         finished-text="没有更多了"
                         @load="onLoad"
                 >
-                    <div class="item"
-                         v-for="(item,index) in list"
-                         :key="index"
-                         @click="noticeClick(item)"
-                    >
-                        <div class="pic">
-                            <img src="../../assets/images/showImg.jpg" alt="">
+                    <van-skeleton title :row="4" :loading="skeletonLoading">
+                        <div class="item"
+                             v-for="(item,index) in list"
+                             :key="index"
+                             @click="noticeClick(item)"
+                        >
+                            <div class="pic">
+                                <img src="../../assets/images/showImg.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <div class="title">
+                                    <p class="t1">女装长库女装长库女装长库</p>
+                                    <p class="price">￥35</p>
+                                </div>
+                                <div class="tags">
+                                    <div class="tag">服装</div>
+                                    <div class="tag">女装</div>
+                                    <div class="tag">成都</div>
+                                    <div class="tag">服装</div>
+                                    <div class="tag">女装</div>
+                                    <div class="tag">成都</div>
+                                </div>
+                                <div class="control">
+                                    <van-button size="small"
+                                                color="#F45905"
+                                                :disabled="true"
+                                                type="default">
+                                            申请
+                                    </van-button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="info">
-                            <div class="title">
-                                <p class="t1">女装长库女装长库女装长库</p>
-                                <p class="price">￥35</p>
-                            </div>
-                            <div class="tags">
-                                <div class="tag">服装</div>
-                                <div class="tag">女装</div>
-                                <div class="tag">成都</div>
-                                <div class="tag">服装</div>
-                                <div class="tag">女装</div>
-                                <div class="tag">成都</div>
-                            </div>
-                            <div class="control">
-                                <van-button size="small"
-                                            color="#F45905"
-                                            :disabled="true"
-                                            type="default">
-                                        申请
-                                </van-button>
-                            </div>
-                        </div>
-                    </div>
+                    </van-skeleton>
                 </van-list>
             </pull-refresh>
 
@@ -63,16 +65,17 @@
 </template>
 
 <script>
-    import {DropdownMenu, DropdownItem,Button as vanButton ,PullRefresh,List as vanList} from 'vant'
+    import {DropdownMenu, DropdownItem,Button as vanButton ,PullRefresh,List as vanList, Skeleton as vanSkeleton} from 'vant'
     export default {
         name: "hall",
-        components:{DropdownMenu,DropdownItem,vanButton,vanList,PullRefresh},
+        components:{DropdownMenu,DropdownItem,vanButton,vanList,PullRefresh, vanSkeleton},
         data() {
             return {
                 list: [],
                 loading: false,
                 finished: false,
                 refreshing: false,
+                skeletonLoading:true,
             }
         },
         methods: {
@@ -94,6 +97,7 @@
                     if (this.list.length >= 40) {
                         this.finished = true;
                     }
+                    this.skeletonLoading = false
                 }, 1000);
             },
             onRefresh() {
@@ -136,8 +140,9 @@
             .info{
                 flex: 1;
                 .control{
+                    float: right;
                     text-align: right;
-                    text-align: right;
+                    padding-top: 5px;
                 }
                 .title{
                     display: flex;

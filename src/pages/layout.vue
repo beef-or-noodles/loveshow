@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="main page-bg">
+        <div class="main">
             <router-view></router-view>
         </div>
         <footer-bar></footer-bar>
@@ -16,7 +16,7 @@
 </script>
 
 <style lang="less" scoped>
-.main{
-    padding-bottom: 40px;
-}
+    .main{
+        padding-bottom: 40px;
+    }
 </style>

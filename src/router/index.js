@@ -60,6 +60,16 @@ const routes = [
         meta: {title: TITLE + '拍客主页'}
     },
     {
+        path: '/coupons',
+        component: () => import(/* webpackChunkName:"coupons" */  '../pages/myinfo/coupons'),
+        meta: {title: TITLE + '优惠卷'}
+    },
+    {
+        path: '/message',
+        component: () => import(/* webpackChunkName:"message" */  '../pages/myinfo/message'),
+        meta: {title: TITLE + '我的消息'}
+    },
+    {
         path: '/404',
         component: () => import(/* webpackChunkName:"404" */  '../pages/404')
     },

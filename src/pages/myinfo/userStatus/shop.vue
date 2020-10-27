@@ -8,24 +8,24 @@
             <div class="box">
                 <div class="toolnav">
                     <div class="item">
-                        <i class="iconfont icon-shezhi"></i>
+                        <div class="iconfont icon-shezhi"></div>
                         <p>个人资料</p>
                     </div>
                     <div class="item">
-                        <i class="iconfont icon-dizhi"></i>
+                        <div class="iconfont icon-dizhi"></div>
                         <p>我的地址</p>
                     </div>
                     <div class="item" @click="$router.push({path:'/collent'})">
-                        <i class="iconfont icon-love_icon"></i>
+                        <div class="iconfont icon-love_icon"></div>
                         <p>收藏</p>
                     </div>
-                    <div class="item message">
-                        <i class="iconfont icon-xiaoxi"></i>
+                    <div class="item message" @click="$router.push({path:'/message'})">
+                        <div class="iconfont icon-xiaoxi"></div>
                         <p>消息</p>
                         <span class="hintnum">2</span>
                     </div>
-                    <div class="item">
-                        <i class="iconfont icon-youhuijuan2"></i>
+                    <div class="item" @click="$router.push({path:'/coupons'})">
+                        <div class="iconfont icon-youhuijuan2"></div>
                         <p>优惠卷</p>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                     font-size: 12px;
                     font-weight: 400;
                     color: @text-2-grey;
-                    i{
+                    .iconfont{
                         font-size: 12px;
                     }
                 }
@@ -192,7 +192,7 @@
                 text-align: center;
                 width: 25%;
                 margin-top: 10px;
-                i{
+                .iconfont{
                     font-size: 24px;
                     color: #06AE64;
                 }
@@ -274,7 +274,8 @@
             &>div{
                 text-align: center;
                 position: relative;
-                i{
+                margin-top: 5px;
+                .iconfont{
                     font-weight: bold;
                     font-size: 24px;
                 }
@@ -287,11 +288,12 @@
                     padding: 0 4px;
                     color: white;
                     right: -5px;
-                    top: 8px;
+                    top: -5px;
                 }
                 p{
                     font-size: 12px;
                     color: @text-1-grey;
+                    margin-top: 5px;
                 }
             }
         }

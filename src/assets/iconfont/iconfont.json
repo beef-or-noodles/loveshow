@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "13654036",
+      "name": "耳机",
+      "font_class": "headset",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "5109506",
+      "name": "铃铛",
+      "font_class": "lingdang",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    },
+    {
+      "icon_id": "13255214",
+      "name": "消 息",
+      "font_class": "xiaoxi1",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "12612372",
+      "name": "选中 (1)",
+      "font_class": "xuanzhong",
+      "unicode": "e72b",
+      "unicode_decimal": 59179
+    },
+    {
       "icon_id": "6668369",
       "name": "中年人",
       "font_class": "zhongnianren",

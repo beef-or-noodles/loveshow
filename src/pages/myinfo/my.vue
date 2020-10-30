@@ -3,7 +3,7 @@
     <div>
         <div class="banner">
             <div class="userInfo">
-                <div class="info">
+                <div class="info" @click="$router.push({path:'/userinfo'})">
                     <div class="icon">
                         <img src="../../assets/images/showImg.jpg" alt="">
                     </div>

@@ -70,6 +70,11 @@ const routes = [
         meta: {title: TITLE + '我的消息'}
     },
     {
+        path: '/userinfo',
+        component: () => import(/* webpackChunkName:"userinfo" */  '../pages/myinfo/userinfo'),
+        meta: {title: TITLE + '个人资料'}
+    },
+    {
         path: '/404',
         component: () => import(/* webpackChunkName:"404" */  '../pages/404')
     },

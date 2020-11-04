@@ -11,7 +11,7 @@
                         <div class="iconfont icon-shezhi"></div>
                         <p>个人资料</p>
                     </div>
-                    <div class="item">
+                    <div class="item" @click="$router.push({path:'/address_list'})">
                         <div class="iconfont icon-dizhi"></div>
                         <p>我的地址</p>
                     </div>

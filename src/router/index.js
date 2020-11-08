@@ -75,6 +75,21 @@ const routes = [
         meta: {title: TITLE + '个人资料'}
     },
     {
+        path: '/address_list',
+        component: () => import(/* webpackChunkName:"address_list" */  '../pages/myinfo/address/list'),
+        meta: {title: TITLE + '地址列表'}
+    },
+    {
+        path: '/address_add',
+        component: () => import(/* webpackChunkName:"address_add" */  '../pages/myinfo/address/add'),
+        meta: {title: TITLE + '新增地址'}
+    },
+    {
+        path: '/address_edit',
+        component: () => import(/* webpackChunkName:"address_add" */  '../pages/myinfo/address/add'),
+        meta: {title: TITLE + '编辑地址'}
+    },
+    {
         path: '/404',
         component: () => import(/* webpackChunkName:"404" */  '../pages/404')
     },

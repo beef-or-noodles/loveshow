@@ -3,6 +3,7 @@
     <transition name="fade">
         <loading v-if="getLoading" />
     </transition>
+    <signindia></signindia>
     <router-view />
   </div>
 </template>
@@ -10,10 +11,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import loading from '@/components/loading/loading'
+import signindia from '@/components/layout/signindia'
 export default {
     name: 'App',
     components: {
-        loading
+        loading,signindia
     },
     computed: {
         ...mapGetters(['getLoading'])

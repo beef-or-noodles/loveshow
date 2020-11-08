@@ -11,7 +11,10 @@
             <div class="icon iconfont icon-dating"></div>
             <p>大厅</p>
         </div>
-        <div class="push" :class="[activeRouter==='/home'?'active':'']">
+        <div class="push"
+             :class="[activeRouter==='/home'?'active':'']"
+             @click="push"
+        >
             <div class="iconpush">
                 <div class="icon iconfont icon-jia flex-center"></div>
             </div>
@@ -30,6 +33,7 @@
 </template>
 
 <script>
+    import { mapMutations} from 'vuex'
     export default {
         name: "footerbar",
         data() {
@@ -43,6 +47,7 @@
             }
         },
         methods: {
+            ...mapMutations(['setSignShow']),
             orderRouter() {
                 // 判断商家和拍客
                 if (true) {
@@ -50,6 +55,9 @@
                 } else {
                     this.$router.push({path: `/shop_order`})
                 }
+            },
+            push(){
+                this.setSignShow(true)
             }
         },
     }

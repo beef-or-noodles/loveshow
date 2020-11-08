@@ -37,7 +37,7 @@
         components:{tourist,shop},
         data() {
             return {
-                identity: 2
+                identity: 1
             }
         },
     }

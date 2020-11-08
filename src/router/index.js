@@ -90,6 +90,16 @@ const routes = [
         meta: {title: TITLE + '编辑地址'}
     },
     {
+        path: '/bind_phone',
+        component: () => import(/* webpackChunkName:"bind_phone" */  '../pages/myinfo/bindPhone'),
+        meta: {title: TITLE + '绑定手机号'}
+    },
+    {
+        path: '/editPassword',
+        component: () => import(/* webpackChunkName:"editPassword" */  '../pages/myinfo/editPassword'),
+        meta: {title: TITLE + '修改密码'}
+    },
+    {
         path: '/404',
         component: () => import(/* webpackChunkName:"404" */  '../pages/404')
     },

@@ -21,7 +21,7 @@
             <van-cell title="昵称 (必填)" @click="editName" is-link :value="userInfo.name"></van-cell>
             <van-cell title="性别" @click="editSex" is-link :value="userInfo.sex==1?'男':'女'"> </van-cell>
             <van-cell title="生日" is-link value="1990-01-01"> </van-cell>
-            <van-cell title="所在城市" is-link value="四川-成都"> </van-cell>
+            <van-cell title="所在城市" @click="areaPopup=true" is-link value="四川-成都"> </van-cell>
             <van-cell title="行业" is-link value="女装"></van-cell>
             <van-cell title="常用拍客" is-link value="美女"></van-cell>
         </div>
@@ -68,20 +68,33 @@
                 />
             </div>
         </van-popup>
+
+
+        <!--选择地区-->
+        <van-popup v-model="areaPopup"
+                   position="bottom">
+            <div class="box">
+                <van-area title="选择地区"
+                          :area-list="areaList"
+                          @confirm="arreaConfirm"
+                          :columns-num="2" />
+            </div>
+        </van-popup>
     </div>
 </template>
 
 <script>
     import upload from '@/components/upload/upload'
-    import {Picker as vanPicker,Field as vanField,Popup as vanPopup ,Cell as vanCell, Icon as vanIcon ,Button as vanButton} from 'vant'
-
+    import {Area as vanArea,Picker as vanPicker,Field as vanField,Popup as vanPopup ,Cell as vanCell, Icon as vanIcon ,Button as vanButton} from 'vant'
+    import areaList from '@/assets/common/area.js'
     export default {
         name: "userinfo",
-        components:{vanPicker,vanField,vanCell,vanIcon,vanButton,upload,vanPopup},
+        components:{vanPicker,vanField,vanCell,vanIcon,vanButton,upload,vanPopup,vanArea},
         data() {
             return {
                 editNamepopup:false,
                 sexPopup:false,
+                areaPopup:false,
                 username:'',
                 userInfo:{
                     img:'',
@@ -99,6 +112,11 @@
                     text:'女',
                     index:1
                 }]
+            }
+        },
+        computed: {
+            areaList() {
+                return areaList
             }
         },
         methods: {
@@ -135,6 +153,12 @@
             },
             onSexCancel(picker, value, index){
                 this.sexPopup = false
+            },
+
+            //地区选择
+            arreaConfirm(value){
+                console.log(value);
+                this.areaPopup = false
             }
         },
     }

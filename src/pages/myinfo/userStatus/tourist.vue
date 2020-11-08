@@ -5,7 +5,7 @@
             <p class="hint">身份设置完成后不可更改</p>
         </div>
         <div class="listItem">
-            <div class="box">
+            <div class="box" @click="$router.push('/bind_phone')">
                 <div class="left">
                     <div class="icon">
                         <img src="../../../assets/images/shop_icon.png" alt="">
